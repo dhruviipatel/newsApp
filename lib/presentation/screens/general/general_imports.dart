@@ -1,0 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
+import 'package:newsapp/core/constants/my_colors.dart';
+import 'package:feather_icons/feather_icons.dart';
+import 'package:newsapp/presentation/screens/general/add_post_screen/add_post_screen_imports.dart';
+import 'package:newsapp/presentation/screens/general/categories_screen/categories_screen_imports.dart';
+import 'package:newsapp/presentation/screens/general/home_screen/home_screen_imports.dart';
+import 'package:newsapp/presentation/screens/general/profile_screen/profile_screen_imports.dart';
+import 'package:newsapp/presentation/screens/general/tags_screen/tags_screen_imports.dart';
+part 'general.dart';
+part 'general_view_model.dart';

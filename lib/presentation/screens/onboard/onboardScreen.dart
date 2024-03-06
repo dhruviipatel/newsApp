@@ -1,15 +1,14 @@
 part of 'onboard_imports.dart';
 
-@RoutePage()
 class OnboardScreen extends StatelessWidget {
   const OnboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final PageController pgController = PageController();
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
             child: Column(
@@ -42,20 +41,10 @@ class OnboardScreen extends StatelessWidget {
                   ],
                 ).expand(),
                 60.h.heightBox,
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: MyColors.primaryColor,
-                      minimumSize: Size(context.screenWidth, 44.h),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(11))),
-                  child: "Get Started"
-                      .text
-                      .size(16.sp)
-                      .fontWeight(FontWeight.w700)
-                      .color(Colors.white)
-                      .make(),
-                ),
+                commonButton(context, onpress: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const Authscreen()));
+                }, buttontext: 'Get Started'),
                 60.h.heightBox,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
