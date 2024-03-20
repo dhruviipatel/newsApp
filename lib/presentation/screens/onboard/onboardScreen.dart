@@ -42,9 +42,18 @@ class OnboardScreen extends StatelessWidget {
                 ).expand(),
                 60.h.heightBox,
                 commonButton(context, onpress: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const Authscreen()));
+                  TagsRepo().getAllTags();
+
+                  // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  //     builder: (context) => const Authscreen()));
                 }, buttontext: 'Get Started'),
+                10.h.heightBox,
+                commonButton(context, onpress: () {
+                  ApiClient().postRequest(path: ApiEndpointUrls.addTags);
+
+                  // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  //     builder: (context) => const Authscreen()));
+                }, buttontext: 'Post'),
                 60.h.heightBox,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
