@@ -8,8 +8,15 @@ class Loginscreen extends StatefulWidget {
 }
 
 class _LoginscreenState extends State<Loginscreen> {
-  var emailController = TextEditingController();
-  var passController = TextEditingController();
+  late LoginscreenViewModel loginscreenViewModel;
+
+  @override
+  void initState() {
+    loginscreenViewModel =
+        LoginscreenViewModel(repository: context.read<Repository>());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,12 +51,12 @@ class _LoginscreenState extends State<Loginscreen> {
                       formFields(
                           title: 'Email',
                           icondata: Icons.email_outlined,
-                          controller: emailController),
+                          controller: loginscreenViewModel.emailController),
                       20.h.heightBox,
                       formFields(
                           title: 'Password',
                           icondata: Icons.lock_outline,
-                          controller: passController,
+                          controller: loginscreenViewModel.passController,
                           ispassword: true),
                       20.h.heightBox,
                       Row(
@@ -83,9 +90,7 @@ class _LoginscreenState extends State<Loginscreen> {
                       ),
                       30.h.heightBox,
                       commonButton(context, onpress: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) =>
-                                const CategorySelectionScreen()));
+                        loginscreenViewModel.login(context);
                       }, buttontext: 'Login'),
                       20.h.heightBox,
                       InkWell(

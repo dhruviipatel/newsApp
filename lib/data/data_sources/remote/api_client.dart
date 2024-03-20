@@ -34,8 +34,9 @@ class ApiClient {
     }
   }
 
-  Future<Response> postRequest({required String path}) async {
-    Map body = {"title": "newtitle1", "slug": "newtitle1"};
+  Future<Response> postRequest(
+      {required String path, required dynamic body}) async {
+    // Map body = {"title": "newtitle1", "slug": "newtitle1"};
 
     final options = Options(headers: {"Authorization": ""});
     try {
@@ -45,7 +46,7 @@ class ApiClient {
       return response;
     } on DioException catch (e) {
       if (e.response != null) {
-        debugPrint(e.response!.data);
+        debugPrint(e.response!.data.toString());
         debugPrint(e.response!.headers.toString());
         debugPrint(e.response!.requestOptions.toString());
         throw ApiException(message: e.response!.statusMessage);
